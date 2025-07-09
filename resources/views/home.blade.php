@@ -7,6 +7,22 @@
             <div class="col-md-12 text-center">
                 <h1 class="hero-title">Latest News & Updates</h1>
                 <p class="hero-subtitle">Stay informed with breaking news and in-depth analysis</p>
+
+                  {{-- ✅ Add search form here --}}
+                <form action="{{ route('home') }}" method="GET" class="hero-search mt-3">
+                    <div class="input-group justify-content-center">
+                        <input 
+                            type="text" 
+                            name="search" 
+                            class="form-control w-50" 
+                            placeholder="Search articles..." 
+                            value="{{ request('search') }}"
+                        >
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -20,6 +36,8 @@
                     <h2><i class="fas fa-newspaper me-2"></i>Breaking News</h2>
                     <div class="section-line"></div>
                 </div>
+                
+
                 
                 <div class="row">
                     @forelse($articles as $article)
