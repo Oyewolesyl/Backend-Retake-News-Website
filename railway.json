@@ -1,6 +1,7 @@
 {
   "build": {
-    "builder": "https://github.com/heroku/heroku-buildpack-php.git"
+    "builder": "heroku/php",
+    "installCommand": "composer install --no-dev --optimize-autoloader"
   },
   "deploy": {
     "startCommand": "vendor/bin/heroku-php-apache2 public/ && php artisan migrate --force"
