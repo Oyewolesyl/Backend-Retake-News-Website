@@ -1,8 +1,19 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
+
+// ADD THIS NEW ROUTE FOR DATABASE DIAGNOSIS
+Route::get('/db-test', function () {
+    try {
+        $config = config('database.connections.mysql');
+        dd($config);
+    } catch (\Exception $e) {
+        dd($e->getMessage());
+    }
+});
 
 // Public routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
