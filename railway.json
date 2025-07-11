@@ -1,6 +1,6 @@
 {
   "build": {
-    "builder": "heroku/php",
+    "builder": "https://github.com/heroku/heroku-buildpack-php.git",
     "installCommand": "composer install --no-dev --optimize-autoloader"
   },
   "deploy": {
