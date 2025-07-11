@@ -2,7 +2,7 @@
   "build": {
     "builder": "nixpacks",
     "installCommand": "composer install --no-dev --optimize-autoloader",
-    "postBuildCommand": "php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan view:cache"
+    "postBuildCommand": "php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan view:cache && chmod -R 777 storage bootstrap/cache"
   },
   "deploy": {
     "startCommand": "php artisan serve --host=0.0.0.0 --port=$PORT"
