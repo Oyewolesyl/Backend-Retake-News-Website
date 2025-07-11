@@ -1,8 +1,10 @@
 {
   "build": {
-    "builder": "nixpacks"
+    "builder": "nixpacks",
+    "installCommand": "composer install --no-dev --optimize-autoloader",
+    "postBuildCommand": "php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan view:cache"
   },
   "deploy": {
-    "startCommand": "vendor/bin/heroku-php-apache2 public/"
+    "startCommand": "php artisan serve --host=0.0.0.0 --port=$PORT"
   }
 }
