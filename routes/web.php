@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Article;
 
 // ADD THIS NEW ROUTE FOR DATABASE DIAGNOSIS
 Route::get('/db-test', function () {
@@ -35,3 +36,10 @@ Route::prefix('admin-dashboard')->middleware(['auth'])->group(function () {
     Route::delete('/users/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
     Route::get('/admins', [AdminController::class, 'admins'])->name('admin.admins');
 });
+
+// ✅ Add this route for user (and admin) profile page
+Route::get('/profile', function () {
+    $user = auth()->user();
+    $userArticles = Article::where('user_id', $user->id)->get();
+    return view('profile', compact('userArticles'));
+})->middleware(['auth'])->name('profile');

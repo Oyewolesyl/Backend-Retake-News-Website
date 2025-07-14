@@ -741,8 +741,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-user me-2"></i>Profile
+                                  <a class="dropdown-item" href="<?php echo e(route('profile')); ?>">
+    <i class="fas fa-user me-2"></i>Profile
+</a>
+
                                     </a>
                                     <a class="dropdown-item" href="#">
                                         <i class="fas fa-cog me-2"></i>Settings
