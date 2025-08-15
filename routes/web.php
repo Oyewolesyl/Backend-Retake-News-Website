@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Article;
 
-// ADD THIS NEW ROUTE FOR DATABASE DIAGNOSIS
+
 Route::get('/db-test', function () {
     try {
         $config = config('database.connections.mysql');
@@ -16,14 +16,11 @@ Route::get('/db-test', function () {
     }
 });
 
-// Public routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/article/{id}', [HomeController::class, 'show'])->name('article.show');
 
-// Authentication routes
 Auth::routes();
 
-// Admin routes - CHECK ADMIN INSIDE THE CONTROLLER INSTEAD
 Route::prefix('admin-dashboard')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/articles', [AdminController::class, 'articles'])->name('admin.articles');
@@ -37,7 +34,6 @@ Route::prefix('admin-dashboard')->middleware(['auth'])->group(function () {
     Route::get('/admins', [AdminController::class, 'admins'])->name('admin.admins');
 });
 
-// ✅ Add this route for user (and admin) profile page
 Route::get('/profile', function () {
     $user = auth()->user();
     $userArticles = Article::where('user_id', $user->id)->get();

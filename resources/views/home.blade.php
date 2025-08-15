@@ -154,6 +154,7 @@
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
+    color: white; 
 }
 
 .hero-subtitle {
